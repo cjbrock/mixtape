@@ -1,4 +1,6 @@
 MixtapeappGaFinal::Application.routes.draw do
+  resources :mixtapes
+
   resources :songs
 
   # The priority is based upon order of creation:
