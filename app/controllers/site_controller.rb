@@ -3,5 +3,6 @@ class SiteController < ApplicationController
   end
 
   def about
+  	@authors = ["Avi Flombaum", "General Assembly", "Rubywan"]
   end
 end

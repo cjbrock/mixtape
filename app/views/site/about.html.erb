@@ -1,2 +1,9 @@
-<h1>Site#about</h1>
-<p>Find me in app/views/site/about.html.erb</p>
+<h1>About</h1>
+
+<h2>Our Team</h2>
+
+<ul>
+  <% @authors.each do |author_name| %>
+  <li><%= author_name %></li>
+  <% end %>
+</ul>
