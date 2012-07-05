@@ -1,4 +1,8 @@
 MixtapeappGaFinal::Application.routes.draw do
+  get "site/home"
+
+  get "site/about"
+
   resources :mixtapes
 
   resources :songs
