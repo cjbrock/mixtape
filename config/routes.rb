@@ -1,6 +1,15 @@
 MixtapeappGaFinal::Application.routes.draw do
+
+  get "/login" => 'sessions#new'
+  post "/sessions" => 'sessions#create'
+  get "/logout" => 'sessions#destroy'
+
   get "/about" => 'site#about'
   get "/jobs" => 'site#jobs'
+
+  get "/signup" => 'users#registration'
+
+
 
   resources :mixtapes
 
