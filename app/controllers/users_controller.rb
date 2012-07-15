@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	def registration
+	def new
 		render :template => 'shared/under_construction'
 	end
 end

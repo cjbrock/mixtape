@@ -9,8 +9,9 @@
 </ul>
 
 <nav>
-	<%= link_to "Home", root_path %>
-	<%= link_to "Registration", signup_path %>
-	<%= link_to "Log In", login_path %>
-	<%= link_to "Log Out", logout_path %>
+	<%= link_to_unless_current "Home", root_path %>
+	<%= link_to_unless_current "Registration", signup_path %>
+	<%= link_to_unless_current "About Us", about_path %>
+	<%= link_to_unless_current "Log In", login_path %>
+	<%= link_to_unless_current "Log Out", logout_path %>
 </nav>
