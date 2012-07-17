@@ -1,5 +1,7 @@
 MixtapeappGaFinal::Application.routes.draw do
 
+  resources :artists
+
   get "/login" => 'sessions#new'
   post "/login" => 'sessions#create'
   get "/logout" => 'sessions#destroy'

@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
+<%= form_for(@attendee) do |a| %>
 
-<p>
-  <b>Name:</b>
-  <%= @mixtape.name %>
-</p>
+ <div class="field">
+    <%= a.label :name %><br />
+    <%= a.text_field :name %>
+  </div>
 
-
-<%= link_to 'Edit', edit_mixtape_path(@mixtape) %> |
-<%= link_to 'Back', mixtapes_path %>
+  <div class="field">
+    <%= a.label :email %><br />
+    <%= a.text_field :email %>
+  </div>
