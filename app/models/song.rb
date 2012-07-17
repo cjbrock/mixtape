@@ -7,8 +7,9 @@ class Song < ActiveRecord::Base
     self.artist.name if self.artist
   end
 
-  def artist_name=
-    self.artist = Artist.find_or_create_by_name(str)
+  def artist_name=(str)
+    artist = Artist.find_or_create_by_name(str)
+    self.artist_id = artist.id
   end
 
   def play
