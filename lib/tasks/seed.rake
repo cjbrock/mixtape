@@ -17,7 +17,7 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
 
   # Push a Song Onto an Artist
   # push a song onto Kanye West
-  k=Artist.where(Name: "Kanye West").first
+  k=Artist.where(name: "Kanye West").first
   s=Song.new(name: "Stronger")
   k.songs<<s
 
@@ -36,8 +36,8 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
 
   # Delete one michael song off of michael
   # Remove a Song from Artist
-  m=Artist.find(7)
-  d=m.songs.find(9)
+  m=Artist.where(name: "Michael Jackson").first
+  d=m.songs.where(name: "Thriller").first
   d.destroy
 
 end

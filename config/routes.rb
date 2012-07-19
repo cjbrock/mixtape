@@ -1,5 +1,7 @@
 MixtapeappGaFinal::Application.routes.draw do
 
+  resources :albums
+
   resources :artists
 
   get "/login" => 'sessions#new'
