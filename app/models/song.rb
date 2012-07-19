@@ -5,7 +5,7 @@ class Song < ActiveRecord::Base
   belongs_to :album
 
   def artist_name
-    self.artist.name if self.artist
+    self.artist.try(:name)
   end
 
   def artist_name=(str)
@@ -14,7 +14,7 @@ class Song < ActiveRecord::Base
   end
 
   def album_name
-    self.album.name if self.album
+    self.album.try(:name)
   end
 
   def album_name=(str)

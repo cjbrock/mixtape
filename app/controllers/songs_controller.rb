@@ -3,7 +3,6 @@ class SongsController < ApplicationController
   # GET /songs.json
   def index
     @songs = Song.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @songs }
