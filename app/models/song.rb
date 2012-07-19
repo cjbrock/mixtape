@@ -1,7 +1,8 @@
 class Song < ActiveRecord::Base
   attr_accessor :play_count
   attr_accessible :name, :album_name, :artist_name, :play_count
-  belongs_to :artist, :album
+  belongs_to :artist
+  belongs_to :album
 
   def artist_name
     self.artist.name if self.artist
