@@ -7,7 +7,7 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
 
   # Build a Song for that Artist
   # build song Natural Woman
-  a-Artist.find(3)
+  a=Artist.where(name: "Aretha Franklin").first
   s=a.songs.build(name: "Natural Woman")
   s.save
 
@@ -17,7 +17,7 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
 
   # Push a Song Onto an Artist
   # push a song onto Kanye West
-  k=Artist.find(5)
+  k=Artist.where(Name: "Kanye West").first
   s=Song.new(name: "Stronger")
   k.songs<<s
 
