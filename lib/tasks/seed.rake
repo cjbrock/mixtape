@@ -26,13 +26,10 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
   # Create Michael Jackson Artist
   # Make 3 Michael Jackson Songs
   # push all songs by Michael Jackson
-  m=Artist.new(name: "Michael Jackson")
-  m.save
-  a=Song.new(name: "Beat It")
-  b=Song.new(name: "Thriller")
-  c=Song.new(name: "Heal the World")
-  m.songs<<[a, b, c]
-
+  m=Artist.create(name: "Michael Jackson")
+    m.songs <<["Beat It", "Thriller", "Heal the World"].collect do |song_name|
+      Song.create :name => song_name
+    end
 
   # Delete one michael song off of michael
   # Remove a Song from Artist
@@ -47,6 +44,7 @@ task :clear_artists_and_songs => [:environment] do
 
   Artist.delete_all
   Song.delete_all
+  Album.delete_all
 end
 
 #check the page for homework
