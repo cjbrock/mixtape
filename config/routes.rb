@@ -1,5 +1,13 @@
 MixtapeappGaFinal::Application.routes.draw do
 
+  resources :user_mixtapes
+
+  resources :mixtape_songs
+
+  resources :song_genres
+
+  resources :genres
+
   resources :albums
 
   resources :artists

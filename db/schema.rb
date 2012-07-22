@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719132342) do
+ActiveRecord::Schema.define(:version => 20120722200804) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -25,8 +25,28 @@ ActiveRecord::Schema.define(:version => 20120719132342) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "genres", :force => true do |t|
+    t.string   "genre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mixtape_songs", :force => true do |t|
+    t.integer  "mixtape_id"
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "mixtapes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "song_genres", :force => true do |t|
+    t.integer  "genre_id"
+    t.integer  "song_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -37,6 +57,13 @@ ActiveRecord::Schema.define(:version => 20120719132342) do
     t.datetime "updated_at", :null => false
     t.integer  "artist_id"
     t.integer  "album_id"
+  end
+
+  create_table "user_mixtapes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "mixtape_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
