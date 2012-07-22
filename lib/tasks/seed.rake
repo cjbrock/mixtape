@@ -37,6 +37,13 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
   d=m.songs.where(name: "Thriller").first
   d.destroy
 
+  #look at video
+  #create user
+  #create user mixtape
+  #create song genres
+  #create a UserMixtape
+
+
 end
 
 task :clear_artists_and_songs => [:environment] do
