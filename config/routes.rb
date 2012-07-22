@@ -1,10 +1,8 @@
 MixtapeappGaFinal::Application.routes.draw do
 
-  resources :user_mixtapes
+  resources :mixtapes
 
-  resources :mixtape_songs
-
-  resources :song_genres
+  resources :songs
 
   resources :genres
 
@@ -21,11 +19,6 @@ MixtapeappGaFinal::Application.routes.draw do
 
   get "/signup" => 'users#new'
 
-
-
-  resources :mixtapes
-
-  resources :songs
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
