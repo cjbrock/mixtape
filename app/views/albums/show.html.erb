@@ -8,7 +8,7 @@
 <p>
   <b>Songs:</b>
   <ul>
-    <% @album.songs.each do |s| %>
+    <% @album.songs.each do |song| %>
       <li><%= link_to song.name, song %></li>
     <% end %>
   </ul>

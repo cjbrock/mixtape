@@ -26,6 +26,8 @@ gem 'jquery-rails'
 
 gem 'thin'
 
+gem 'nested_form'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
