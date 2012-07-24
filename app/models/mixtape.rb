@@ -1,7 +1,7 @@
 class Mixtape < ActiveRecord::Base
-  attr_accessible :name, :mixtape_songs_attributes
+  attr_accessible :name, :mixtape_songs_attributes, :genre
 
-  has_many :mixtape_songs
+  has_many :mixtape_songs, :dependent => :destroy
   has_many :songs, :through => :mixtape_songs
 
   has_many :user_mixtapes

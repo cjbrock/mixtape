@@ -6,13 +6,12 @@ class SongGenre < ActiveRecord::Base
 
   delegate :name, :to => :genre, :prefix => true, :allow_nil => true
 
-    def genre_name=(str)
-    proposed_genre = Genre.find_or_create_by_name(str.strip.downcase) if str.present?
-    if proposed_genre
-      existing_genres = SongGenre.where(:genre_id => proposed_genre.id, :song_id => self.song_id)
-      return unless existing_genres.blank?
-      self.genre = proposed_genre
-    end
+  def genre_name
+    genre.try(:name)
+  end
+
+  def genre_name=(str)
+    self.genre = Genre.find_or_create_by_genre(str) if str.present?
   end
 end
 

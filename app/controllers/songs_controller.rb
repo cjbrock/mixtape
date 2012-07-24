@@ -25,6 +25,10 @@ class SongsController < ApplicationController
   def new
     @song = Song.new
 
+    3.times do 
+      @song.song_genres.build
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @song }

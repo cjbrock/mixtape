@@ -1,9 +1,7 @@
 class Genre < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :genre, :name
 
-  has_many :song_genres
-  has_namy :songs, :through => :song_genres
+  has_many :song_genres, :dependent => :destroy
+  has_many :songs, :through => :song_genres
 
-  validates_uniqueness_of :name
-  validates :name, :length => { :minimun => 2}
 end

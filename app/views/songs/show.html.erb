@@ -19,7 +19,7 @@
   <b>Genres</b>
   <ul>
     <% @song.genres.each do |genre| %>
-    <li><%= link_to genre.name, genre %></li>
+    <li><%= link_to genre.genre, genre %></li>
     <% end %>
   </ul>
 </p>

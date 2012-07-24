@@ -29,7 +29,7 @@
   <%= f.fields_for :song_genres do |song_genre_form| %>
     <div class="field">
       <%= song_genre_form.label :genre_id %><br />
-      <%= song_genre_form.text_field :genre_name %>
+      <%= song_genre_form.text_field :genre_genre %>
       <%= song_genre_form.check_box :_destroy %>
     </div>
   <% end %>

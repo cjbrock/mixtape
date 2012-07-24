@@ -1,57 +1,57 @@
 desc "Create a bunch of seed data for artists and songs"
-task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
-  puts "Working on it..."
-  s=Song.create(name: "R.E.S.P.E.C.T.")
-  s.build_artist(name: "Aretha Franklin")
-  s.save
+  task :seed_everything => [:environment, 'db:drop', 'db:create', 'db:migrate'] do
 
-  # Build a Song for that Artist
-  # build song Natural Woman
-  a=Artist.where(name: "Aretha Franklin").first
-  s=a.songs.build(name: "Natural Woman")
-  s.save
+   # 7. 2 are shared.
 
-  # Manually Create Artist Kanye West
-  k=Artist.create(name: "Kanye West")
-  k.save
-
-  # Push a Song Onto an Artist
-  # push a song onto Kanye West
-  k=Artist.where(name: "Kanye West").first
-  s=Song.new(name: "Stronger")
-  k.songs<<s
-
-
-
-  # Create Michael Jackson Artist
-  # Make 3 Michael Jackson Songs
-  # push all songs by Michael Jackson
-  m=Artist.create(name: "Michael Jackson")
-    m.songs <<["Beat It", "Thriller", "Heal the World"].collect do |song_name|
+    michael=Artist.create(name: "Michael Jackson")
+    michael.songs <<["Beat It", "Thriller", "Heal the World", "Rock With You", "Black or White"].collect do |song_name|
       Song.create :name => song_name
     end
 
-  # Delete one michael song off of michael
-  # Remove a Song from Artist
-  m=Artist.where(name: "Michael Jackson").first
-  d=m.songs.where(name: "Thriller").first
-  d.destroy
+    bruno=Artist.create(name: "Bruno Mars")
+    bruno.songs <<["Just the Way You Are", "Grenade", "Marry You"].collect do |song_name|
+      Song.create :name => song_name
+    end
 
-  #look at video
-  #create user
-  #create user mixtape
-  #create song genres
-  #create a UserMixtape
+    gwen=Artist.create(name: "Gwen Stefani")
+    gwen.songs <<["Hollaback Girl", "Harajuku Girls", "Long Way to Go"].collect do |song_name|
+      Song.create :name => song_name
+    end
+    puts "Artists and Songs Created"
 
+    best=Album.create(name: "Best of MJ")
+    best.songs << michael.songs
+
+    doowops=Album.create(name: "doo-wops and hooligans")
+    doowops.songs << bruno.songs
+
+    love=Album.create(name: "Love.Angel.Music.Baby")
+    love.songs = gwen.songs
+    puts "Albums Created"
+
+    g=Genre.create(genre: "Pop")
+    h=Genre.create(genre: "Rap")
+    i=Genre.create(genre: "Hip-Hop")
+    j=Genre.create(genre: "R&B")
+    k=Genre.create(genre: "Dance")
+    puts "Genres Created"
+
+    corinna = User.create(name: "Corinna")
+    favorites = Mixtape.create(name: "Corinna's Favorites")
+    corinna.mixtapes << favorites
+    favorites.songs << bruno.songs
+
+    party = Mixtape.create(name: "Dance Party")
+    corinna.mixtapes << party
+    party.songs << love.songs
+
+    sappy = Mixtape.create(name: "Sappy Stuff")
+    corinna.mixtapes << sappy
+    favorites.songs << doowops.songs
+
+    robert = User.create(name: "Robert")
+    bad = Mixtape.create(name: "Robert's Music Sucks")
+    robert.mixtapes << bad
+    puts "Users and Mixtapes created"
 
 end
-
-task :clear_artists_and_songs => [:environment] do
-  puts "Deleting all Artists and Songs...."
-
-  Artist.delete_all
-  Song.delete_all
-  Album.delete_all
-end
-
-#check the page for homework
