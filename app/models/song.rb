@@ -11,7 +11,8 @@ class Song < ActiveRecord::Base
   has_many :mixtapes, :through => :mixtape_songs
 
   accepts_nested_attributes_for :song_genres
-
+  validate :validate_unique_songs
+  
   def artist_name
     self.artist.try(:name)
   end
@@ -29,4 +30,9 @@ class Song < ActiveRecord::Base
     album = Album.find_or_create_by_name(str)
     self.album_id = album.id
   end
+
+  def validate_unique_songs
+    validate_uniqueness_of_in_memory(self.song_genres, [:song_id, :genre_id], 'Duplicate genre')
+  end
+
 end

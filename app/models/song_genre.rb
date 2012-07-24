@@ -7,12 +7,13 @@ class SongGenre < ActiveRecord::Base
   delegate :name, :to => :genre, :prefix => true, :allow_nil => true
 
   def genre_name
-    genre.try(:name)
+    genre.try(:genre)
   end
 
   def genre_name=(str)
     self.genre = Genre.find_or_create_by_genre(str) if str.present?
   end
+
 end
 
 
