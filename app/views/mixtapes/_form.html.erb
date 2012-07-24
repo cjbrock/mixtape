@@ -1,21 +1,19 @@
-<%= form_for(@mixtape) do |f| %>
-  <% if @mixtape.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@mixtape.errors.count, "error") %> prohibited this mixtape from being saved:</h2>
+<%= form_for @mixtape do |mixtape_form| %>
 
-      <ul>
-      <% @mixtape.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="field">
+  <%= mixtape_form.label :name %>
+  <%= mixtape_form.text_field :name %>
+</div>
+
+<div class="field">
+  <%= mixtape_form.fields_for :mixtape_songs, @mixtape.mixtape_songs.build do |mixtape_songs_fields| %>
+    <%= mixtape_songs_fields.label :song_id %>
+    <%= mixtape_songs_fields.select :song_id, Song.all.collect{|s| [s.name, s.id]} %>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= mixtape_form.submit %>
+</div>
+
 <% end %>

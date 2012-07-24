@@ -1,6 +1,5 @@
 class Song < ActiveRecord::Base
-  attr_accessor :play_count
-  attr_accessible :name, :play_count
+  attr_accessible :name, :album_name, :album_id, :artist_name, :artist_id, :song_genres_attributes
 
   belongs_to :artist
   belongs_to :album
@@ -28,14 +27,4 @@ class Song < ActiveRecord::Base
     album = Album.find_or_create_by_name(str)
     self.album_id = album.id
   end
-
-
-  def play
-    if @play_count
-      @play_count +=1
-    else
-      @play_count = 1
-    end
-  end
-
 end
