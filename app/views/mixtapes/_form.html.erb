@@ -1,19 +1,24 @@
-<%= form_for @mixtape do |mixtape_form| %>
+<%= nested_form_for(@mixtape) do |mixtape_form| %>
+  <div class="field">
+    <%= mixtape_form.label :name %>
+    <%= mixtape_form.text_field :name %>
+  </div>
 
-<div class="field">
-  <%= mixtape_form.label :name %>
-  <%= mixtape_form.text_field :name %>
-</div>
+  <div class="field">
+    <%= mixtape_form.fields_for :mixtape_songs, @mixtape.mixtape_songs.build do |mixtape_songs_fields| %>
+      <%= mixtape_songs_fields.label :song_id %>
+      <%= mixtape_songs_fields.select :song_id, Song.all.collect{|s| [s.name, s.id]} %>
+    <% end %>
+  </div>
 
-<div class="field">
-  <%= mixtape_form.fields_for :mixtape_songs, @mixtape.mixtape_songs.build do |mixtape_songs_fields| %>
-    <%= mixtape_songs_fields.label :song_id %>
-    <%= mixtape_songs_fields.select :song_id, Song.all.collect{|s| [s.name, s.id]} %>
+  <%= mixtape_form.fields_for :users do |user_form| %>
+    <%= user_form.text_field :name %>
+    <%= user_form.link_to_remove "Remove this user" %>
   <% end %>
-</div>
 
-<div class="actions">
-  <%= mixtape_form.submit %>
-</div>
+  <p><%= mixtape_form.link_to_add "Add a user", :users %></p>
 
+  <div class="actions">
+    <%= mixtape_form.submit %>
+  </div>
 <% end %>

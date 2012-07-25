@@ -59,7 +59,7 @@ class MixtapesController < ApplicationController
     @mixtape = Mixtape.find(params[:id])
 
     respond_to do |format|
-      if @mixtape.update_attributes(params[:mixtape])
+        if @mixtape.update_attributes(params[:mixtape])
         format.html { redirect_to @mixtape, notice: 'Mixtape was successfully updated.' }
         format.json { head :no_content }
       else

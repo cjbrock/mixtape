@@ -1,5 +1,5 @@
 class Mixtape < ActiveRecord::Base
-  attr_accessible :name, :mixtape_songs_attributes, :genre
+  attr_accessible :name, :mixtape_songs_attributes, :genre, :users_attributes
 
   has_many :mixtape_songs, :dependent => :destroy
   has_many :songs, :through => :mixtape_songs
@@ -8,7 +8,6 @@ class Mixtape < ActiveRecord::Base
   has_many :users, :through => :user_mixtapes
 
   accepts_nested_attributes_for :mixtape_songs
+  accepts_nested_attributes_for :users, allow_destroy: true
 
-  def mixtape_songs_attributes=(attributes)
-  end
 end

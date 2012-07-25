@@ -14,6 +14,15 @@
   </ul>
 </p>
 
+<p>
+  <b>Users:</b>
+  <ul>
+    <% @mixtape.users.each do |user| %>
+    <li><%= link_to user.name, user %></li>
+    <% end %>
+  </ul>
+</p>
+
 
 <%= link_to 'Edit', edit_mixtape_path(@mixtape) %> |
 <%= link_to 'Back', mixtapes_path %>
