@@ -11,6 +11,13 @@
     <% end %>
   </div>
 
+  <%= mixtape_form.fields_for :songs do |song_form| %>
+    <%= song_form.text_field :name %>
+    <%= song_form.link_to_remove "Remove this song" %>
+  <% end %>
+
+  <p><%= mixtape_form.link_to_add "Add a new song", :songs %></p>
+
   <%= mixtape_form.fields_for :users do |user_form| %>
     <%= user_form.text_field :name %>
     <%= user_form.link_to_remove "Remove this user" %>

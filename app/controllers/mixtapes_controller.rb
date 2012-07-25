@@ -41,7 +41,6 @@ class MixtapesController < ApplicationController
   # POST /mixtapes.json
   def create
     @mixtape = Mixtape.new(params[:mixtape])
-
     respond_to do |format|
       if @mixtape.save
         format.html { redirect_to @mixtape, notice: 'Mixtape was successfully created.' }
