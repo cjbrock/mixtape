@@ -7,6 +7,7 @@ class Mixtape < ActiveRecord::Base
   has_many :user_mixtapes, :dependent => :destroy
   has_many :users, :through => :user_mixtapes
 
+
   accepts_nested_attributes_for :mixtape_songs
   accepts_nested_attributes_for :users, allow_destroy: true
   accepts_nested_attributes_for :songs, allow_destroy: true

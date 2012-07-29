@@ -10,6 +10,7 @@
   <ul>
     <% @mixtape.songs.each do |song| %>
     <li><%= link_to song.name, song %></li>
+    <%#= (render song)  - renders partial called song %>
     <% end %>
   </ul>
 </p>
@@ -22,7 +23,6 @@
     <% end %>
   </ul>
 </p>
-
 
 <%= link_to 'Edit', edit_mixtape_path(@mixtape) %> |
 <%= link_to 'Back', mixtapes_path %>

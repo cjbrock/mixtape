@@ -3,4 +3,12 @@ class UserMixtape < ActiveRecord::Base
 
   belongs_to :mixtape
   belongs_to :user
+
+  #def email = (str)
+    #fill in
+  #end
+
+  #def email
+    #define
+  #end
 end

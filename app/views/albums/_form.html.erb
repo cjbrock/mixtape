@@ -17,8 +17,12 @@
   </div>
 
   <%= f.fields_for :songs do |song_form| %>
+    <%= song_form.label :name %>
     <%= song_form.text_field :name %>
-    <%= song_form.link_to_remove "Remove this song" %>
+    <%= song_form.link_to_remove "Remove this song" %><br />
+    <%= song_form.label :artist_name %>
+    <%= song_form.text_field :artist_name %>
+    <%= song_form.link_to_remove "Remove this artist" %><br />
   <% end %>
   <p><%= f.link_to_add "Add a song", :songs %></p>
 

@@ -1,6 +1,8 @@
 MixtapeappGaFinal::Application.routes.draw do
 
-  resources :mixtapes
+  resources :mixtapes do
+    resources :users, :controller => :user_mixtapes
+  end
 
   resources :songs
 
@@ -20,6 +22,7 @@ MixtapeappGaFinal::Application.routes.draw do
   get "/jobs" => 'site#jobs'
 
   get "/signup" => 'users#new'
+
 
 
   # The priority is based upon order of creation:
